@@ -4,11 +4,11 @@ Created on Tue Jun 23 18:34:48 2020
 
 @author: Lucas Nobre
 """
-from keras.models import Sequential
-from keras.layers import MaxPooling2D, Flatten, Conv2D, Dense, Dropout
-from keras.preprocessing.image import ImageDataGenerator
-from keras.layers import BatchNormalization
-from keras.preprocessing import image
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import MaxPooling2D, Flatten, Conv2D, Dense, Dropout
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from tensorflow.keras.layers import BatchNormalization
+from tensorflow.keras.preprocessing import image
 import  numpy as np
 
 # Criando modelo
@@ -71,13 +71,13 @@ train_generator = ImageDataGenerator(rescale=1./255,         # Normalizacao
 test_generator = ImageDataGenerator(rescale=1./255)
 
 
-path_train = '/home/lucas/Documentos/Git-Repositorios/Deep-Learning-DL/03-Dog-cat/dataset/training_set'
+path_train = 'C:/Users/Lucas Nobre/Desktop/Deep-Learning-DL/08-Dog-cat/dataset/training_set'
 base_train = train_generator.flow_from_directory(path_train,    
                                                  target_size=(64,64),
                                                  batch_size=32,
                                                  class_mode='binary')
 
-path_test = '/home/lucas/Documentos/Git-Repositorios/Deep-Learning-DL/03-Dog-cat/dataset/test_set'
+path_test = 'C:/Users/Lucas Nobre/Desktop/Deep-Learning-DL/08-Dog-cat/dataset/test_set'
 base_test = test_generator.flow_from_directory(path_test,    
                                                  target_size=(64,64),
                                                  batch_size=32,
@@ -90,20 +90,46 @@ model.fit_generator(base_train, steps_per_epoch=4000/32,
 
 # TESTANDO COM UMA UNICA IMAGEM
 # lendo uma imagem
-image_test = image.load_img('dataset/test_set/gato/cat.3500.jpg',
-                            target_size=(64,64))
 
-# mudando fomato da image.
-image_test = image.img_to_array(image_test)
+def predCatDog(path_image):
+    image_test = image.load_img(path_image,
+                                target_size=(64,64))
 
-# normalizando a imagem
-image_test /= 255
+    # mudando fomato da image.
+    image_test = image.img_to_array(image_test)
+    
+    # normalizando a imagem
+    image_test /= 255
+    
+    image_test = np.expand_dims(image_test,axis=0)
+    
+    pred = model.predict(image_test)
+    
+    if pred > 0.5:
+        print("Classificado: Gato")
+    else:
+        print("Classificado: Cachorro")
 
-image_test = np.expand_dims(image_test,axis=0)
+path_image = "C:/Users/Lucas Nobre/Desktop/Deep-Learning-DL/08-Dog-cat/dataset/test_set/cachorro/dog.3502.jpg"
 
-pred = model.predict(image_test)
+predCatDog(path_image)
 
 base_train.class_indices
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
