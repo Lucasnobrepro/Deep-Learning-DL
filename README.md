@@ -41,3 +41,8 @@ Algoritmos de Deep-Learning
     -Classificação multicalsses;
     -CNN;
     -ImageDataGenerate;
+
+### 09 - Previsão das ações da bolsa de valores da petrobras;
+    -RCNN
+    -Matplotlib;
+    -Callbacks;
