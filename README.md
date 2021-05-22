@@ -6,7 +6,8 @@ Algoritmos de Deep-Learning
 Caso o Notebook não carregue, entre em  [nbviewer](https://nbviewer.jupyter.org/) e cole o link do codígo.
 ## Requisitos
     01 - Python3;
-    02 - TensorFlow 2.*;
+    02 - Anaconda;
+    03 - TensorFlow 2.*;
     
 ### 01 - Classificação com redes neurais sobre problemas binarios;
     -Classificação binaria;
