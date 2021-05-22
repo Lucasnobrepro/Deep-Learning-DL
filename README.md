@@ -1,6 +1,9 @@
 Deep-Learning-DL
 
 Algoritmos de Deep-Learning
+
+### Problemas para visualizar o Jupyter Notebook
+Caso o Notebook não carregue, entre em  [nbviewer](https://nbviewer.jupyter.org/) e cole o link do codígo.
 ## Requisitos
     01 - Python3;
     02 - TensorFlow 2.*;
